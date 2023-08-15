@@ -2,7 +2,7 @@
   "Descriptor": {
     "UId": "f13de844-9370-434e-8cc6-455296135794",
     "Name": "UsrDummyPackage",
-    "ModifiedOnUtc": "\/Date(1692018981000)\/",
+    "ModifiedOnUtc": "\/Date(1692099382000)\/",
     "ManagerName": "ProcessSchemaManager",
     "Caption": "Тестовый процесс",
     "DependsOn": []
