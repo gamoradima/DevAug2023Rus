@@ -1,0 +1,14 @@
+﻿{
+  "Descriptor": {
+    "UId": "d7762a8e-fb1d-4254-b0f2-fd7cc05e3742",
+    "Name": "UsrRealtyFreedomUI",
+    "ModifiedOnUtc": "\/Date(1692189042000)\/",
+    "Parent": {
+      "UId": "1bab9dcf-17d5-49f8-9536-8e0064f1dce0",
+      "Name": "BaseEntity"
+    },
+    "ManagerName": "EntitySchemaManager",
+    "Caption": "Недвижимость (FreedomUI)",
+    "DependsOn": []
+  }
+}
