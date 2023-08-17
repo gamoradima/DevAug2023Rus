@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="ru-RU">
+	<Group Type="String">
+		<Items>
+			<Item Name="AddonConfig.Rules.7301dd88-73b3-11da-5df1-a0c5dbf77f6b.Caption" Value="Скрыть элементы: Комментарий" />
+			<Item Name="Caption" Value="Страница записи Недвижимость (FreedomUI) (Бизнес правила)" />
+		</Items>
+	</Group>
+</Resources>

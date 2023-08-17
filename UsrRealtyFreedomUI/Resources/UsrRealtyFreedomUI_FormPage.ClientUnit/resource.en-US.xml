@@ -3,8 +3,19 @@
 	<Group Type="String">
 		<Items>
 			<Item Name="Caption" Value="Недвижимость (FreedomUI) form page" />
+			<Item Name="LocalizableStrings.addRecord_0s2yvuw_caption.Value" Value="Добавить" />
+			<Item Name="LocalizableStrings.addRecord_3qoak9p_caption.Value" Value="Добавить" />
+			<Item Name="LocalizableStrings.addRecord_52ey6si_caption.Value" Value="Добавить" />
 			<Item Name="LocalizableStrings.addRecord_8570ek5_caption.Value" Value="Добавить" />
 			<Item Name="LocalizableStrings.addRecord_8fpugg8_caption.Value" Value="Добавить" />
+			<Item Name="LocalizableStrings.Button_jr6cdw6_caption.Value" Value="Пыщь!" />
+			<Item Name="LocalizableStrings.ExpansionPanel_s95szpa_title.Value" Value="Просмотр недвижимости (FreedomUI)" />
+			<Item Name="LocalizableStrings.GridDetailAddBtn_yb6tq8g_caption.Value" Value="Добавить" />
+			<Item Name="LocalizableStrings.GridDetailExportDataBtn_zx369nh_caption.Value" Value="Экспорт в Excel" />
+			<Item Name="LocalizableStrings.GridDetailImportDataBtn_z1a7vbh_caption.Value" Value="Импорт данных" />
+			<Item Name="LocalizableStrings.GridDetailRefreshBtn_y1qsl43_caption.Value" Value="Обновить" />
+			<Item Name="LocalizableStrings.GridDetailSearchFilter_cedjc19_placeholder.Value" Value="Поиск" />
+			<Item Name="LocalizableStrings.GridDetailSettingsBtn_v8bx4a2_caption.Value" Value="Действия" />
 			<Item Name="LocalizableStrings.UsrType_placeholder.Value" Value="укажите тип недвижимости" />
 			<Item Name="LocalizableStrings.UsrType_tooltip.Value" Value="Недвижимость бывает разная" />
 		</Items>

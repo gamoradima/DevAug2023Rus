@@ -4,7 +4,10 @@
 		<Items>
 			<Item Name="Caption" Value="Недвижимость (FreedomUI)" />
 			<Item Name="Columns.UsrArea.Caption" Value="Площадь, м2" />
+			<Item Name="Columns.UsrCity.Caption" Value="Город" />
 			<Item Name="Columns.UsrComment.Caption" Value="Комментарий" />
+			<Item Name="Columns.UsrCountry.Caption" Value="Страна" />
+			<Item Name="Columns.UsrManager.Caption" Value="Менеджер" />
 			<Item Name="Columns.UsrName.Caption" Value="Название" />
 			<Item Name="Columns.UsrOfferType.Caption" Value="Тип предложения" />
 			<Item Name="Columns.UsrPriceUSD.Caption" Value="Цена, USD" />
