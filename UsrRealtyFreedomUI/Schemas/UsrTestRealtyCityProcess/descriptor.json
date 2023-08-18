@@ -1,0 +1,10 @@
+﻿{
+  "Descriptor": {
+    "UId": "2531356e-ba4d-4540-ad1e-19e98be2fbd6",
+    "Name": "UsrTestRealtyCityProcess",
+    "ModifiedOnUtc": "\/Date(1692357090000)\/",
+    "ManagerName": "ProcessSchemaManager",
+    "Caption": "Test city process",
+    "DependsOn": []
+  }
+}

@@ -16,6 +16,7 @@
 			<Item Name="LocalizableStrings.GridDetailRefreshBtn_y1qsl43_caption.Value" Value="Обновить" />
 			<Item Name="LocalizableStrings.GridDetailSearchFilter_cedjc19_placeholder.Value" Value="Поиск" />
 			<Item Name="LocalizableStrings.GridDetailSettingsBtn_v8bx4a2_caption.Value" Value="Действия" />
+			<Item Name="LocalizableStrings.NumberInput_ja0t8ze_label.Value" Value="Число" />
 			<Item Name="LocalizableStrings.UsrType_placeholder.Value" Value="укажите тип недвижимости" />
 			<Item Name="LocalizableStrings.UsrType_tooltip.Value" Value="Недвижимость бывает разная" />
 		</Items>
