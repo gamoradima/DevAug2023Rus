@@ -1,0 +1,14 @@
+﻿{
+  "Descriptor": {
+    "UId": "28707317-2e7d-4613-b4df-57fbd516d019",
+    "Name": "Contacts_FormPage",
+    "ModifiedOnUtc": "\/Date(1692703875000)\/",
+    "Parent": {
+      "UId": "e785a54d-7cc8-467f-9768-958ff8ad34d2",
+      "Name": "Contacts_FormPage"
+    },
+    "ExtendParent": true,
+    "ManagerName": "ClientUnitSchemaManager",
+    "Caption": "Страница записи Контакты"
+  }
+}

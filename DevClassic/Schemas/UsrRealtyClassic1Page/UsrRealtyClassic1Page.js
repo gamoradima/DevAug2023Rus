@@ -1,7 +1,22 @@
 define("UsrRealtyClassic1Page", [], function() {
 	return {
 		entitySchemaName: "UsrRealtyClassic",
-		attributes: {},
+		attributes: {
+			"UsrCommissionUSD": {
+				dependencies: [
+					{
+						columns: ["UsrPriceUSD", "UsrOfferType"],
+						methodName: "calculateCommission"
+					}
+				],
+				"caption": "Commission, USD"
+			},
+			"UsrOfferType": {
+				lookupListConfig: {
+					columns: ["UsrCommissionPercent"]
+				}
+			}
+		},
 		modules: /**SCHEMA_MODULES*/{}/**SCHEMA_MODULES*/,
 		details: /**SCHEMA_DETAILS*/{
 			"Files": {
@@ -14,7 +29,42 @@ define("UsrRealtyClassic1Page", [], function() {
 			}
 		}/**SCHEMA_DETAILS*/,
 		businessRules: /**SCHEMA_BUSINESS_RULES*/{}/**SCHEMA_BUSINESS_RULES*/,
-		methods: {},
+		methods: {
+			calculateCommission: function() {
+				var price = this.get("UsrPriceUSD");
+				if (!price) {
+					price = 0;
+				}
+				var offerTypeObject = this.get("UsrOfferType");
+				var percent = 0;
+				if (offerTypeObject) {
+					percent = offerTypeObject.UsrCommissionPercent;
+				}
+				var commission = price * percent / 100;
+				this.set("UsrCommissionUSD", commission);
+				this.console.log("Commission = " + commission);
+			},
+
+			onEntityInitialized: function() {
+				this.callParent(arguments);
+				this.calculateCommission();
+			},
+			positiveValueValidator: function(value, column) {
+				var msg = "";
+				if (value < 0) {
+					msg = this.get("Resources.Strings.ValueMustBeGreaterThanZero");
+				}
+				return {
+					invalidMessage: msg
+				};
+			},
+			setValidationConfig: function() {
+				this.callParent(arguments);
+				this.addColumnValidator("UsrPriceUSD", this.positiveValueValidator);
+				this.addColumnValidator("UsrArea", this.positiveValueValidator);
+			},
+
+		},
 		dataModels: /**SCHEMA_DATA_MODELS*/{}/**SCHEMA_DATA_MODELS*/,
 		diff: /**SCHEMA_DIFF*/[
 			{
@@ -34,6 +84,141 @@ define("UsrRealtyClassic1Page", [], function() {
 				"parentName": "ProfileContainer",
 				"propertyName": "items",
 				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "FLOAT11806d83-6778-42f6-9b70-fb202b693b3e",
+				"values": {
+					"layout": {
+						"colSpan": 24,
+						"rowSpan": 1,
+						"column": 0,
+						"row": 1,
+						"layoutName": "ProfileContainer"
+					},
+					"bindTo": "UsrPriceUSD",
+					"enabled": true
+				},
+				"parentName": "ProfileContainer",
+				"propertyName": "items",
+				"index": 1
+			},
+			{
+				"operation": "insert",
+				"name": "FLOATb91dca09-23fd-40a3-a5ed-5afce759b664",
+				"values": {
+					"layout": {
+						"colSpan": 24,
+						"rowSpan": 1,
+						"column": 0,
+						"row": 2,
+						"layoutName": "ProfileContainer"
+					},
+					"bindTo": "UsrArea",
+					"enabled": true
+				},
+				"parentName": "ProfileContainer",
+				"propertyName": "items",
+				"index": 2
+			},
+			{
+				"operation": "insert",
+				"name": "FLOAT2cde81ea-38df-4367-a344-e46f3dfab85c",
+				"values": {
+					"layout": {
+						"colSpan": 24,
+						"rowSpan": 1,
+						"column": 0,
+						"row": 3,
+						"layoutName": "ProfileContainer"
+					},
+					"bindTo": "UsrCommissionUSD",
+					"enabled": false
+				},
+				"parentName": "ProfileContainer",
+				"propertyName": "items",
+				"index": 3
+			},
+			{
+				"operation": "insert",
+				"name": "LOOKUPf213cca9-0917-4a8b-98a7-e7cd411c498e",
+				"values": {
+					"layout": {
+						"colSpan": 12,
+						"rowSpan": 1,
+						"column": 0,
+						"row": 0,
+						"layoutName": "Header"
+					},
+					"bindTo": "UsrType",
+					"enabled": true,
+					"contentType": 3
+				},
+				"parentName": "Header",
+				"propertyName": "items",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "LOOKUPe9e5406d-dfaf-46a5-939e-fd42222945e1",
+				"values": {
+					"layout": {
+						"colSpan": 12,
+						"rowSpan": 1,
+						"column": 12,
+						"row": 0,
+						"layoutName": "Header"
+					},
+					"bindTo": "UsrOfferType",
+					"enabled": true,
+					"contentType": 3
+				},
+				"parentName": "Header",
+				"propertyName": "items",
+				"index": 1
+			},
+			{
+				"operation": "insert",
+				"name": "STRING98442545-6daa-4c1a-9dd6-09af33059d44",
+				"values": {
+					"layout": {
+						"colSpan": 12,
+						"rowSpan": 1,
+						"column": 0,
+						"row": 1,
+						"layoutName": "Header"
+					},
+					"bindTo": "UsrComment",
+					"tip": {
+						"content": {
+							"bindTo": "Resources.Strings.STRING984425456daa4c1a9dd609af33059d44Tip"
+						}
+					},
+					"enabled": true,
+					"contentType": 0
+				},
+				"parentName": "Header",
+				"propertyName": "items",
+				"index": 2
+			},
+			{
+				"operation": "insert",
+				"name": "LOOKUPd1bc46ae-cb00-4941-88cd-41ecc71574ed",
+				"values": {
+					"layout": {
+						"colSpan": 12,
+						"rowSpan": 1,
+						"column": 12,
+						"row": 1,
+						"layoutName": "Header"
+					},
+					"bindTo": "UsrManager",
+					"enabled": true,
+					"contentType": 5
+				},
+				"parentName": "Header",
+				"propertyName": "items",
+				"index": 3
 			},
 			{
 				"operation": "insert",
