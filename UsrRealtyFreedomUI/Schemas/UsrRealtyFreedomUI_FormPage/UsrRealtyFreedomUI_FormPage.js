@@ -1,4 +1,3 @@
-/* jshint esversion: 11 */
 define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHEMA_ARGS*/()/**SCHEMA_ARGS*/ {
 	return {
 		viewConfigDiff: /**SCHEMA_VIEW_CONFIG_DIFF*/[
@@ -60,6 +59,46 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 			},
 			{
 				"operation": "insert",
+				"name": "Button_zud2qzj",
+				"values": {
+					"type": "crt.Button",
+					"caption": "#ResourceString(Button_zud2qzj_caption)#",
+					"color": "primary",
+					"disabled": false,
+					"size": "medium",
+					"iconPosition": "left-icon",
+					"visible": true,
+					"menuItems": [],
+					"clickMode": "menu",
+					"icon": "process-button-icon"
+				},
+				"parentName": "CardToggleContainer",
+				"propertyName": "items",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "MenuItem_rhnjb1j",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "#ResourceString(MenuItem_rhnjb1j_caption)#",
+					"visible": true,
+					"icon": "calculator-button-icon",
+					"clicked": {
+						"request": "crt.RunBusinessProcessRequest",
+						"params": {
+							"processName": "UsrCalculateAveragePriceProcess",
+							"processRunType": "ForTheSelectedPage",
+							"recordIdProcessParameterName": "RealtyIdFreedomUIParameter"
+						}
+					}
+				},
+				"parentName": "Button_zud2qzj",
+				"propertyName": "menuItems",
+				"index": 0
+			},
+			{
+				"operation": "insert",
 				"name": "Button_Push",
 				"values": {
 					"type": "crt.Button",
@@ -77,7 +116,7 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 				},
 				"parentName": "CardToggleContainer",
 				"propertyName": "items",
-				"index": 0
+				"index": 1
 			},
 			{
 				"operation": "insert",
