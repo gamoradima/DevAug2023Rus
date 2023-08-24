@@ -3,6 +3,7 @@
 	<Group Type="String">
 		<Items>
 			<Item Name="Caption" Value="Страница редактирования: &quot;Недвижимость (ClassicUI)&quot;" />
+			<Item Name="LocalizableStrings.RunWebServiceButtonCaption.Value" Value="Запуск сервиса" />
 			<Item Name="LocalizableStrings.STRING984425456daa4c1a9dd609af33059d44Tip.Value" Value="пример подсказки" />
 			<Item Name="LocalizableStrings.ValueMustBeGreaterThanZero.Value" Value="Value must be greater than zero" />
 		</Items>

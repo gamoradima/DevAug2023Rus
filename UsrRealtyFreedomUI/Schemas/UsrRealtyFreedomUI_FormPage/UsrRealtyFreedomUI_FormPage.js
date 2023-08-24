@@ -1,4 +1,5 @@
-define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHEMA_ARGS*/()/**SCHEMA_ARGS*/ {
+/* jshint esversion: 11 */
+define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/["@creatio-devkit/common"]/**SCHEMA_DEPS*/, function/**SCHEMA_ARGS*/(sdk)/**SCHEMA_ARGS*/ {
 	return {
 		viewConfigDiff: /**SCHEMA_VIEW_CONFIG_DIFF*/[
 			{
@@ -96,6 +97,22 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 				"parentName": "Button_zud2qzj",
 				"propertyName": "menuItems",
 				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "MenuItem_ygjfdl7",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "#ResourceString(MenuItem_ygjfdl7_caption)#",
+					"visible": true,
+					"clicked": {
+						"request": "usr.RunWebServiceButtonRequest"
+					},
+					"icon": "process-button-icon"
+				},
+				"parentName": "Button_zud2qzj",
+				"propertyName": "menuItems",
+				"index": 1
 			},
 			{
 				"operation": "insert",
@@ -837,6 +854,53 @@ define("UsrRealtyFreedomUI_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, functi
 			}
 		}/**SCHEMA_MODEL_CONFIG*/,
 		handlers: /**SCHEMA_HANDLERS*/[
+			{
+				request: "usr.RunWebServiceButtonRequest",
+				/* Implementation of the custom query handler. */
+				handler: async (request, next) => {
+					this.console.log("Run web service button works...");
+
+					var typeObject = await request.$context.LookupAttribute_on6h2xh;
+					var typeId = "";
+					if (typeObject) {
+						typeId = typeObject.value;
+					}
+					// get id from type lookup type object
+
+					var offerTypeObject = await request.$context.LookupAttribute_x0hkvi4;
+					var offerTypeId = "";
+					if (offerTypeObject) {
+						offerTypeId = offerTypeObject.value;
+					}
+					// get id from type lookup offer type object
+
+					/* Specify the URL to retrieve the current rate. Use the coindesk.com external service. */
+					const baseUrl = Terrasoft.utils.uri.getConfigurationWebServiceBaseUrl();
+					const transferName = "rest";
+					const serviceName = "RealtyService";
+					const methodName = "GetTotalAmountByTypeId";
+					const endpoint = Terrasoft.combinePath(baseUrl, transferName, serviceName, methodName);
+					
+					//const endpoint = "http://localhost/D5_8.0.8.4758/0/rest/RealtyService/GetTotalAmountByTypeId";
+					/* Send a POST HTTP request. The HTTP client converts the response body from JSON to a JS object automatically. */
+					var params = {
+						realtyTypeId: typeId,
+						realtyOfferTypeId: offerTypeId,
+						entityName: "UsrRealtyFreedomUI"
+					};
+
+					/* Create an instance of the HTTP client from @creatio-devkit/common. */
+					const httpClientService = new sdk.HttpClientService();
+
+					const response = await httpClientService.post(endpoint, params);
+					
+					this.console.log("response total price = " + response.body.GetTotalAmountByTypeIdResult);
+					
+					/* Call the next handler if it exists and return its result. */
+					return next?.handle(request);
+				}
+			},	
+
 			{
 				request: "usr.MyButtonRequest",
 				/* Implementation of the custom query handler. */

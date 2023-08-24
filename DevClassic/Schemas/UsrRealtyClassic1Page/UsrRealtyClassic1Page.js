@@ -1,4 +1,4 @@
-define("UsrRealtyClassic1Page", [], function() {
+define("UsrRealtyClassic1Page", ["ServiceHelper"], function(ServiceHelper) {
 	return {
 		entitySchemaName: "UsrRealtyClassic",
 		attributes: {
@@ -63,6 +63,31 @@ define("UsrRealtyClassic1Page", [], function() {
 				this.addColumnValidator("UsrPriceUSD", this.positiveValueValidator);
 				this.addColumnValidator("UsrArea", this.positiveValueValidator);
 			},
+			onRunWebServiceButtonClick: function() {
+				var typeObject = this.get("UsrType");
+				if (!typeObject) {
+					return;
+				}
+				var typeId = typeObject.value;
+				var offerTypeObject = this.get("UsrOfferType");
+				if (!offerTypeObject) {
+					return;
+				}
+				var offerTypeId = offerTypeObject.value;
+				var params = {
+					realtyTypeId: typeId,
+					realtyOfferTypeId: offerTypeId,
+					entityName: "UsrRealtyClassic"
+				};				
+				this.console.log("1");
+				ServiceHelper.callService("RealtyService", "GetTotalAmountByTypeId", this.getWebServiceResult, params, this);
+				this.console.log("2");
+			},
+			getWebServiceResult: function(response, success) {
+				this.console.log("3");
+				this.Terrasoft.showInformation("Total amount by typeId: " + response.GetTotalAmountByTypeIdResult);
+			}
+
 
 		},
 		dataModels: /**SCHEMA_DATA_MODELS*/{}/**SCHEMA_DATA_MODELS*/,
@@ -139,6 +164,35 @@ define("UsrRealtyClassic1Page", [], function() {
 				"propertyName": "items",
 				"index": 3
 			},
+            /* Метаданные для добавления на страницу пользовательской кнопки. */
+            {
+                /* Выполняется операция добавления элемента на страницу. */
+                "operation": "insert",
+                /* Мета-имя родительского контейнера, в который добавляется кнопка. */
+                "parentName": "ProfileContainer",
+                /* Кнопка добавляется в коллекцию элементов родительского элемента. */
+                "propertyName": "items",
+                /* Мета-имя добавляемой кнопки. */
+                "name": "RunWebServiceButton",
+                /* Свойства, передаваемые в конструктор элемента. */
+                "values": {
+					"layout": {
+						"colSpan": 10,
+						"rowSpan": 1,
+						"column": 0,
+						"row": 4,
+						"layoutName": "ProfileContainer"
+					},
+                    /* Тип добавляемого элемента — кнопка. */
+                    "itemType": Terrasoft.ViewItemType.BUTTON,
+                    /* Привязка заголовка кнопки к локализуемой строке схемы. */
+                    "caption": {bindTo: "Resources.Strings.RunWebServiceButtonCaption"},
+                    /* Привязка метода-обработчика нажатия кнопки. */
+                    "click": {bindTo: "onRunWebServiceButtonClick"},
+                    /* Стиль отображения кнопки. */
+                    "style": Terrasoft.controls.ButtonEnums.style.RED
+                }
+            },
 			{
 				"operation": "insert",
 				"name": "LOOKUPf213cca9-0917-4a8b-98a7-e7cd411c498e",
